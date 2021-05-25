@@ -3,6 +3,11 @@ name = "imath-traits"
 version = "0.1.0"
 authors = ["Anders Langlands <anderslanglands@gmail.com>"]
 edition = "2018"
+license = "Apache-2.0"
+license-file = "LICENSE"
+keywords = ["graphics", "vfx"]
+readme = "README.md"
+description = "Utility traits for VFX libraries to be agnostic over the math crates used"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
