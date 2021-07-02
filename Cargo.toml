@@ -3,7 +3,6 @@ name = "imath-traits"
 version = "0.1.0"
 authors = ["Anders Langlands <anderslanglands@gmail.com>"]
 edition = "2018"
-license = "Apache-2.0"
 license-file = "LICENSE"
 keywords = ["graphics", "vfx"]
 readme = "README.md"
@@ -14,6 +13,7 @@ description = "Utility traits for VFX libraries to be agnostic over the math cra
 [dependencies]
 half = "1.7.1"
 
-nalgebra = {version = "^0.26", optional = true}
+nalgebra = {version = "^0.27", optional = true}
 nalgebra-glm = {version = "^0.12", optional = true}
 cgmath = {version = "^0.18", optional = true}
+glam = {version = "^0.17", optional = true}
