@@ -6,11 +6,11 @@
 //! no methods other than for converting back and forth between slices and raw pointers.
 //!
 //! To use, simply add the feature for the math crate you need to the dependency
-//! of any crate that uses imath-traits, and types will just work with any function
+//! of any crate that uses imath-traits (these will be called `impl_<crate>`, and types will just work with any function
 //! from that crate that expects a Vec2<T>, Vec3<T>, Vec4<T>, Bound2<T> or Bound3<T>:
 //!
 //! ```toml
-//! openexr = { version = "0.10-3.0.1", features=["cgmath"] }
+//! openexr = { version = "0.10-3.0.1", features=["impl_cgmath"] }
 //! ```
 //!
 //! Currently, we support glam, nalgebra and nalgebra_glm. If you need another math
