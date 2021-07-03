@@ -342,3 +342,26 @@ impl Bound3<i32> for Box3i {
         self as *const Box3i as *const i32
     }
 }
+
+#[cfg(test)]
+#[test]
+fn test_box_glam() {
+    use glam::{IVec2, IVec3};
+
+    let b2 = Box2i {
+        min: IVec2::new(0, 0),
+        max: IVec2::new(5, 7),
+    };
+
+    assert_eq!(b2.width(), 5);
+    assert_eq!(b2.height(), 7);
+
+    let b3 = Box3i {
+        min: IVec3::new(0, 0, 0),
+        max: IVec3::new(5, 7, 9),
+    };
+
+    assert_eq!(b3.width(), 5);
+    assert_eq!(b3.height(), 7);
+    assert_eq!(b3.depth(), 9);
+}

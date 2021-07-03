@@ -5,6 +5,9 @@
 
 pub use crate::*;
 
+use std::fmt;
+use std::ops::Sub;
+
 use cgmath::{Vector2, Vector3, Vector4};
 
 impl<T> Vec2<T> for cgmath::Vector2<T>
@@ -112,7 +115,7 @@ where
 #[derive(Copy, Clone, PartialEq, Hash, Debug)]
 pub struct Box2<T>
 where
-    T: Copy,
+    T: Sub<Output = T> + Copy + fmt::Debug,
 {
     pub min: Vector2<T>,
     pub max: Vector2<T>,
@@ -120,7 +123,7 @@ where
 
 impl<T> Bound2<T> for Box2<T>
 where
-    T: Copy,
+    T: Sub<Output = T> + Copy + fmt::Debug,
 {
     fn from_slice(slice: &[T; 4]) -> Self {
         Box2::<T> {
@@ -159,7 +162,7 @@ where
 
 impl<T> Bound3<T> for Box3<T>
 where
-    T: Copy,
+    T: Sub<Output = T> + Copy + fmt::Debug,
 {
     fn from_slice(slice: &[T; 6]) -> Self {
         Box3::<T> {
@@ -188,3 +191,24 @@ where
 pub type Box3i = Box3<i32>;
 pub type Box3f = Box3<f32>;
 pub type Box3d = Box3<f64>;
+
+#[cfg(test)]
+#[test]
+fn test_box_cgmath() {
+    let b2 = Box2::<i32> {
+        min: Vector2::<i32>::new(0, 0),
+        max: Vector2::<i32>::new(5, 7),
+    };
+
+    assert_eq!(b2.width(), 5);
+    assert_eq!(b2.height(), 7);
+
+    let b3 = Box3::<i32> {
+        min: Vector3::<i32>::new(0, 0, 0),
+        max: Vector3::<i32>::new(5, 7, 9),
+    };
+
+    assert_eq!(b3.width(), 5);
+    assert_eq!(b3.height(), 7);
+    assert_eq!(b3.depth(), 9);
+}

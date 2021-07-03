@@ -6,11 +6,11 @@
 //! no methods other than for converting back and forth between slices and raw pointers.
 //!
 //! To use, simply add the feature for the math crate you need to the dependency
-//! of any crate that uses imath-traits (these will be called `impl_<crate>`, and types will just work with any function
+//! of any crate that uses imath-traits (these will be called `imath_<crate>`, and types will just work with any function
 //! from that crate that expects a Vec2<T>, Vec3<T>, Vec4<T>, Bound2<T> or Bound3<T>:
 //!
 //! ```toml
-//! openexr = { version = "0.10-3.0.1", features=["impl_cgmath"] }
+//! openexr = { version = "0.10-3.0.1", features=["imath_cgmath"] }
 //! ```
 //!
 //! Currently, we support glam, nalgebra and nalgebra_glm. If you need another math
@@ -35,22 +35,22 @@ pub use zero::Zero;
 #[cfg(feature = "cgmath")]
 pub mod impl_cgmath;
 #[cfg(feature = "cgmath")]
-pub use impl_cgmath::{Box2, Box3};
+pub use impl_cgmath::{Box2, Box2d, Box2f, Box2i, Box3, Box3d, Box3f, Box3i};
 
 #[cfg(feature = "glam")]
 pub mod impl_glam;
 #[cfg(feature = "glam")]
-pub use impl_glam::{Box2, Box3};
+pub use impl_glam::{Box2d, Box2f, Box2i, Box3d, Box3f, Box3i};
 
 #[cfg(feature = "nalgebra")]
 pub mod impl_nalgebra;
 #[cfg(feature = "nalgebra")]
-pub use impl_nalgebra::{Box2, Box3};
+pub use impl_nalgebra::{Box2d, Box2f, Box2i, Box3d, Box3f, Box3i};
 
 #[cfg(feature = "nalgebra-glm")]
 pub mod impl_nalgebra_glm;
 #[cfg(feature = "nalgebra_glm")]
-pub use impl_nalgebra_glm::{Box2, Box3};
+pub use impl_nalgebra_glm::{Box2d, Box2f, Box2i, Box3d, Box3f, Box3i};
 
 #[cfg(test)]
 mod tests {

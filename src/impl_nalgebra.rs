@@ -5,6 +5,8 @@
 
 pub use crate::*;
 
+use std::ops::Sub;
+
 use nalgebra::{vector, Vector2, Vector3, Vector4};
 
 impl<T> Vec2<T> for nalgebra::Vector2<T>
@@ -88,7 +90,7 @@ where
 #[derive(Copy, Clone, PartialEq, Debug)]
 pub struct Box2<T>
 where
-    T: Copy + std::fmt::Debug + PartialEq + 'static,
+    T: Copy + std::fmt::Debug + PartialEq + 'static + Sub<Output = T>,
 {
     pub min: Vector2<T>,
     pub max: Vector2<T>,
@@ -96,7 +98,7 @@ where
 
 impl<T> Bound2<T> for Box2<T>
 where
-    T: Copy + std::fmt::Debug + PartialEq + 'static,
+    T: Copy + std::fmt::Debug + PartialEq + 'static + Sub<Output = T>,
 {
     fn from_slice(slice: &[T; 4]) -> Self {
         Self {
@@ -121,7 +123,7 @@ pub type Box2d = Box2<f64>;
 #[derive(Copy, Clone, PartialEq, Debug)]
 pub struct Box3<T>
 where
-    T: Copy + std::fmt::Debug + PartialEq + 'static,
+    T: Copy + std::fmt::Debug + PartialEq + 'static + Sub<Output = T>,
 {
     pub min: Vector3<T>,
     pub max: Vector3<T>,
@@ -129,7 +131,7 @@ where
 
 impl<T> Bound3<T> for Box3<T>
 where
-    T: Copy + std::fmt::Debug + PartialEq + 'static,
+    T: Copy + std::fmt::Debug + PartialEq + 'static + Sub<Output = T>,
 {
     fn from_slice(slice: &[T; 6]) -> Self {
         Self {
@@ -150,3 +152,24 @@ where
 pub type Box3i = Box3<i32>;
 pub type Box3f = Box3<f32>;
 pub type Box3d = Box3<f64>;
+
+#[cfg(test)]
+#[test]
+fn test_box_nalgebra() {
+    let b2 = Box2i {
+        min: vector![0, 0],
+        max: vector![5, 7],
+    };
+
+    assert_eq!(b2.width(), 5);
+    assert_eq!(b2.height(), 7);
+
+    let b3 = Box3i {
+        min: vector![0, 0, 0],
+        max: vector![5, 7, 9],
+    };
+
+    assert_eq!(b3.width(), 5);
+    assert_eq!(b3.height(), 7);
+    assert_eq!(b3.depth(), 9);
+}
