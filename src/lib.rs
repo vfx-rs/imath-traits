@@ -34,15 +34,23 @@ pub use zero::Zero;
 
 #[cfg(feature = "cgmath")]
 pub mod impl_cgmath;
+#[cfg(feature = "cgmath")]
+pub use impl_cgmath::{Box2, Box3};
 
 #[cfg(feature = "glam")]
 pub mod impl_glam;
+#[cfg(feature = "glam")]
+pub use impl_glam::{Box2, Box3};
 
 #[cfg(feature = "nalgebra")]
 pub mod impl_nalgebra;
+#[cfg(feature = "nalgebra")]
+pub use impl_nalgebra::{Box2, Box3};
 
 #[cfg(feature = "nalgebra-glm")]
 pub mod impl_nalgebra_glm;
+#[cfg(feature = "nalgebra_glm")]
+pub use impl_nalgebra_glm::{Box2, Box3};
 
 #[cfg(test)]
 mod tests {

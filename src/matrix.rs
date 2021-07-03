@@ -12,7 +12,7 @@ where
     T: Copy,
 {
     fn from_slice(slice: &[T; 9]) -> Self {
-        slice.clone()
+        *slice
     }
 
     fn as_slice(&self) -> &[T; 9] {
@@ -38,7 +38,7 @@ where
     T: Copy,
 {
     fn from_slice(slice: &[T; 16]) -> Self {
-        slice.clone()
+        *slice
     }
 
     fn as_slice(&self) -> &[T; 16] {
