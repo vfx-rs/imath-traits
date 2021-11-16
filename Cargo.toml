@@ -1,6 +1,6 @@
 [package]
 name = "imath-traits"
-version = "0.5.0"
+version = "0.6.0"
 authors = ["Anders Langlands <anderslanglands@gmail.com>"]
 edition = "2018"
 license-file = "LICENSE"
