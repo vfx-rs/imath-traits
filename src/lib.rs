@@ -52,6 +52,21 @@ pub mod impl_nalgebra_glm;
 #[cfg(feature = "nalgebra_glm")]
 pub use impl_nalgebra_glm::{Box2d, Box2f, Box2i, Box3d, Box3f, Box3i};
 
+#[cfg(not(any(
+    feature = "cgmath",
+    feature = "glam",
+    feature = "nalgebra",
+    feature = "nalgebra-glm"
+)))]
+pub mod impl_array;
+#[cfg(not(any(
+    feature = "cgmath",
+    feature = "glam",
+    feature = "nalgebra",
+    feature = "nalgebra-glm"
+)))]
+pub use impl_array::{Box2d, Box2f, Box2i, Box3d, Box3f, Box3i};
+
 #[cfg(test)]
 mod tests {
     #[test]
